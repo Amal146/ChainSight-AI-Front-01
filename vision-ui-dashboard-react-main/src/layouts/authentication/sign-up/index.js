@@ -27,7 +27,8 @@ import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 
 // Icons
-import { FaApple, FaFacebook, FaGoogle } from "react-icons/fa";
+import { FaEthereum } from "react-icons/fa";
+import { SiHedera, SiBinance } from "react-icons/si";
 
 // Vision UI Dashboard React components
 import VuiBox from "components/VuiBox";
@@ -47,10 +48,11 @@ import borders from "assets/theme/base/borders";
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 
 // Images
-import bgSignIn from "assets/images/signUpImage.png";
+import bgSignIn from "assets/images/blockchainbg.jpg";
 
 function SignIn() {
   const [rememberMe, setRememberMe] = useState(true);
+  const [selectedBlockchain, setSelectedBlockchain] = useState("");
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
@@ -58,10 +60,9 @@ function SignIn() {
     <CoverLayout
       title="Welcome!"
       color="white"
-      description="Use these awesome forms to login or create new account in your project for free."
       image={bgSignIn}
       premotto="INSPIRED BY THE FUTURE:"
-      motto="THE VISION UI DASHBOARD"
+      motto="SEE BEYOND THE CHAIN"
       cardContent
     >
       <GradientBorder borderRadius={borders.borderRadius.form} minWidth="100%" maxWidth="100%">
@@ -74,6 +75,29 @@ function SignIn() {
             backgroundColor: secondary.focus,
           })}
         >
+          <VuiBox
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            mb={3}
+            p={1.5} // Padding around logo
+            sx={({ palette }) => ({
+              backgroundColor: palette.background.paper, // Light background from your theme
+              borderRadius: "12px", // Rounded corners
+              width: "fit-content",
+              mx: "auto", // Center horizontally
+            })}
+          >
+            <img
+              src={require("assets/images/logo-CS.png")}
+              alt="ChainSight AI Logo"
+              style={{
+                width: "120px",
+                height: "auto",
+              }}
+            />
+          </VuiBox>
+
           <VuiTypography
             color="white"
             fontWeight="bold"
@@ -83,107 +107,12 @@ function SignIn() {
               fontSize: size.lg,
             })}
           >
-            Register with
-          </VuiTypography>
-          <Stack mb="25px" justifyContent="center" alignItems="center" direction="row" spacing={2}>
-            <GradientBorder borderRadius="xl">
-              <a href="#">
-                <IconButton
-                  transition="all .25s ease"
-                  justify="center"
-                  align="center"
-                  bg="rgb(19,21,54)"
-                  borderradius="15px"
-                  sx={({ palette: { secondary }, borders: { borderRadius } }) => ({
-                    borderRadius: borderRadius.xl,
-                    padding: "25px",
-                    backgroundColor: secondary.focus,
-                    "&:hover": {
-                      backgroundColor: rgba(secondary.focus, 0.9),
-                    },
-                  })}
-                >
-                  <Icon
-                    as={FaFacebook}
-                    w="30px"
-                    h="30px"
-                    sx={({ palette: { white } }) => ({
-                      color: white.focus,
-                    })}
-                  />
-                </IconButton>
-              </a>
-            </GradientBorder>
-            <GradientBorder borderRadius="xl">
-              <a href="#">
-                <IconButton
-                  transition="all .25s ease"
-                  justify="center"
-                  align="center"
-                  bg="rgb(19,21,54)"
-                  borderradius="15px"
-                  sx={({ palette: { secondary }, borders: { borderRadius } }) => ({
-                    borderRadius: borderRadius.xl,
-                    padding: "25px",
-                    backgroundColor: secondary.focus,
-                    "&:hover": {
-                      backgroundColor: rgba(secondary.focus, 0.9),
-                    },
-                  })}
-                >
-                  <Icon
-                    as={FaApple}
-                    w="30px"
-                    h="30px"
-                    sx={({ palette: { white } }) => ({
-                      color: white.focus,
-                    })}
-                  />
-                </IconButton>
-              </a>
-            </GradientBorder>
-            <GradientBorder borderRadius="xl">
-              <a href="#">
-                <IconButton
-                  transition="all .25s ease"
-                  justify="center"
-                  align="center"
-                  bg="rgb(19,21,54)"
-                  borderradius="15px"
-                  sx={({ palette: { secondary }, borders: { borderRadius } }) => ({
-                    borderRadius: borderRadius.xl,
-                    padding: "25px",
-                    backgroundColor: secondary.focus,
-                    "&:hover": {
-                      backgroundColor: rgba(secondary.focus, 0.9),
-                    },
-                  })}
-                >
-                  <Icon
-                    as={FaGoogle}
-                    w="30px"
-                    h="30px"
-                    sx={({ palette: { white } }) => ({
-                      color: white.focus,
-                    })}
-                  />
-                </IconButton>
-              </a>
-            </GradientBorder>
-          </Stack>
-          <VuiTypography
-            color="text"
-            fontWeight="bold"
-            textAlign="center"
-            mb="14px"
-            sx={({ typography: { size } }) => ({ fontSize: size.lg })}
-          >
-            or
+            Register Your Wallet
           </VuiTypography>
           <VuiBox mb={2}>
             <VuiBox mb={1} ml={0.5}>
               <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
-                Name
+                Username
               </VuiTypography>
             </VuiBox>
             <GradientBorder
@@ -197,13 +126,14 @@ function SignIn() {
               )}
             >
               <VuiInput
-                placeholder="Your full name..."
+                placeholder="Your username..."
                 sx={({ typography: { size } }) => ({
                   fontSize: size.sm,
                 })}
               />
             </GradientBorder>
           </VuiBox>
+          {/* Email */}
           <VuiBox mb={2}>
             <VuiBox mb={1} ml={0.5}>
               <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
@@ -229,6 +159,8 @@ function SignIn() {
               />
             </GradientBorder>
           </VuiBox>
+
+          {/* Password */}
           <VuiBox mb={2}>
             <VuiBox mb={1} ml={0.5}>
               <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
@@ -254,6 +186,120 @@ function SignIn() {
               />
             </GradientBorder>
           </VuiBox>
+
+          {/* Confirm Password */}
+          <VuiBox mb={2}>
+            <VuiBox mb={1} ml={0.5}>
+              <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+                Confirm Password
+              </VuiTypography>
+            </VuiBox>
+            <GradientBorder
+              minWidth="100%"
+              borderRadius={borders.borderRadius.lg}
+              padding="1px"
+              backgroundImage={radialGradient(
+                palette.gradients.borderLight.main,
+                palette.gradients.borderLight.state,
+                palette.gradients.borderLight.angle
+              )}
+            >
+              <VuiInput
+                type="password"
+                placeholder="Confirm your password..."
+                sx={({ typography: { size } }) => ({
+                  fontSize: size.sm,
+                })}
+              />
+            </GradientBorder>
+          </VuiBox>
+
+          {/* Wallet Address */}
+          <VuiBox mb={2}>
+            <VuiBox mb={1} ml={0.5}>
+              <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+                Wallet Address
+              </VuiTypography>
+            </VuiBox>
+            <GradientBorder
+              minWidth="100%"
+              borderRadius={borders.borderRadius.lg}
+              padding="1px"
+              backgroundImage={radialGradient(
+                palette.gradients.borderLight.main,
+                palette.gradients.borderLight.state,
+                palette.gradients.borderLight.angle
+              )}
+            >
+              <VuiInput
+                placeholder="Your wallet address..."
+                sx={({ typography: { size } }) => ({
+                  fontSize: size.sm,
+                })}
+              />
+            </GradientBorder>
+          </VuiBox>
+
+          {/* Blockchain Type */}
+          <VuiBox mb={2}>
+            <VuiBox mb={1} ml={0.5}>
+              <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
+                Select Blockchain
+              </VuiTypography>
+            </VuiBox>
+            <VuiBox display="flex" justifyContent="space-between" mt={2}>
+              {/* Ethereum */}
+              <IconButton
+                onClick={() => setSelectedBlockchain("ethereum")}
+                sx={{
+                  border:
+                    selectedBlockchain === "ethereum"
+                      ? "2px solid #00e0ff"
+                      : "2px solid transparent",
+                  borderRadius: "12px",
+                  padding: "10px",
+                  backgroundColor: "transparent",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <FaEthereum size={30} color="white" />
+              </IconButton>
+
+              {/* Hedera */}
+              <IconButton
+                onClick={() => setSelectedBlockchain("hedera")}
+                sx={{
+                  border:
+                    selectedBlockchain === "hedera" ? "2px solid #00e0ff" : "2px solid transparent",
+                  borderRadius: "12px",
+                  padding: "10px",
+                  backgroundColor: "transparent",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <SiHedera size={30} color="white" />
+              </IconButton>
+
+              {/* Binance Smart Chain */}
+              <IconButton
+                onClick={() => setSelectedBlockchain("binance")}
+                sx={{
+                  border:
+                    selectedBlockchain === "binance"
+                      ? "2px solid #00e0ff"
+                      : "2px solid transparent",
+                  borderRadius: "12px",
+                  padding: "10px",
+                  backgroundColor: "transparent",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <SiBinance size={30} color="white" />
+              </IconButton>
+            </VuiBox>
+          </VuiBox>
+
+          {/* Remember Me */}
           <VuiBox display="flex" alignItems="center">
             <VuiSwitch color="info" checked={rememberMe} onChange={handleSetRememberMe} />
             <VuiTypography
@@ -266,11 +312,15 @@ function SignIn() {
               &nbsp;&nbsp;&nbsp;&nbsp;Remember me
             </VuiTypography>
           </VuiBox>
+
+          {/* Sign Up Button */}
           <VuiBox mt={4} mb={1}>
             <VuiButton color="info" fullWidth>
               SIGN UP
             </VuiButton>
           </VuiBox>
+
+          {/* Already have an account */}
           <VuiBox mt={3} textAlign="center">
             <VuiTypography variant="button" color="text" fontWeight="regular">
               Already have an account?{" "}

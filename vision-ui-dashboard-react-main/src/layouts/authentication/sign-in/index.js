@@ -38,7 +38,7 @@ import borders from "assets/theme/base/borders";
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 
 // Images
-import bgSignIn from "assets/images/signInImage.png";
+import bgSignIn from "assets/images/blockchainbg.jpg";
 
 function SignIn() {
   const [rememberMe, setRememberMe] = useState(true);
@@ -51,10 +51,34 @@ function SignIn() {
       color="white"
       description="Enter your email and password to sign in"
       premotto="INSPIRED BY THE FUTURE:"
-      motto="THE VISION UI DASHBOARD"
+      motto="SEE BEYOND THE CHAIN"
       image={bgSignIn}
     >
+      <VuiBox
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        mb={3}
+        p={1.5} // Padding around logo
+        sx={({ palette }) => ({
+          backgroundColor: palette.background.paper, // Light background from your theme
+          borderRadius: "12px", // Rounded corners
+          width: "fit-content",
+          mx: "auto", // Center horizontally
+        })}
+      >
+        <img
+          src={require("assets/images/logo-CS.png")}
+          alt="ChainSight AI Logo"
+          style={{
+            width: "120px",
+            height: "auto",
+          }}
+        />
+      </VuiBox>
       <VuiBox component="form" role="form">
+        
+
         <VuiBox mb={2}>
           <VuiBox mb={1} ml={0.5}>
             <VuiTypography component="label" variant="button" color="white" fontWeight="medium">
